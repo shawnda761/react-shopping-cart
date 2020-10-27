@@ -15,9 +15,13 @@ class App extends Component {
   }
 
   filterProducts = (event) => {
+    const sortedProducts = data.products.slice().sort((a, b) => (
+      (this.state.sort === "lowest") ? ((a.price > b.price) ? 1 : -1) : (this.state.sort === "highest") ? ((a.price < b.price) ? 1 : -1) : ((a._id > b._id) ? 1 : -1)
+    ));
+
     this.setState({
       size: event.target.value,
-      products: (event.target.value === "") ? data.products : data.products.filter(product => product.avaliableSizes.includes(event.target.value))
+      products: (event.target.value === "") ? sortedProducts : sortedProducts.filter(product => product.avaliableSizes.includes(event.target.value))
     });
   }
 
