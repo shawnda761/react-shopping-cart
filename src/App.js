@@ -23,7 +23,7 @@ class App extends Component {
 
     this.setState({
       size: event.target.value,
-      products: (event.target.value === "") ? sortedProducts : sortedProducts.filter(product => product.avaliableSizes.includes(event.target.value))
+      products: (event.target.value === "") ? sortedProducts : sortedProducts.filter(product => product.availableSizes.includes(event.target.value))
     });
   }
 
